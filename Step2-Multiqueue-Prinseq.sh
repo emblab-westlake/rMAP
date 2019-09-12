@@ -128,13 +128,13 @@ wait
 for samplename in `cat ${samplelist}`;do
 echo -e "`du -sh ${cleanpath}/${samplename}/${samplename}_1.fastq`/tfilesize" >> Prinseq-log.file
 echo -e "`du -sh ${cleanpath}/${samplename}/${samplename}_1.fastq`/tfilesize" >> Prinseq-log.file
-fq1=`du -sh ${cleanpath}/${samplename}/${samplename}_1.fastq | awk '{print $1}' | sed 's/G//'`
-fq2=`du -sh ${cleanpath}/${samplename}/${samplename}_2.fastq | awk '{print $1}' | sed 's/G//'`
+fq1=`du -sh ${cleanpath}/${samplename}/${samplename}_1.fastq | awk '{print $1}' | sed 's/G//;s/M//'`
+fq2=`du -sh ${cleanpath}/${samplename}/${samplename}_2.fastq | awk '{print $1}' | sed 's/G//;s/M//'`
 if [ $fq1 -ne $fq2 ];then
 echo "Warning!!! ${samplename}_1.fastq ${samplename}_2.fastq not of the same magnitude" >> Prinseq-log.file
 fi
-rm ${cleanpath}/${samplename}_1_singletons.fastq
-rm ${cleanpath}/${samplename}_2_singletons.fastq
+rm ${cleanpath}/${samplename}/${samplename}_1_singletons.fastq
+rm ${cleanpath}/${samplename}/${samplename}_2_singletons.fastq
 done
 echo "Prinseq down ----------- `date`" >> Prinseq-log.file
 echo -e "time-consuming: $SECONDS seconds" >> Prinseq-log.file #Print the execution time of the script
