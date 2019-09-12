@@ -127,7 +127,7 @@ wait
 
 for samplename in `cat ${samplelist}`;do
 echo -e "`du -sh ${cleanpath}/${samplename}/${samplename}_1.fastq`/tfilesize" >> Prinseq-log.file
-echo -e "`du -sh ${cleanpath}/${samplename}/${samplename}_1.fastq`/tfilesize" >> Prinseq-log.file
+echo -e "`du -sh ${cleanpath}/${samplename}/${samplename}_2.fastq`/tfilesize" >> Prinseq-log.file
 fq1=`du -sh ${cleanpath}/${samplename}/${samplename}_1.fastq | awk '{print $1}' | sed 's/G//;s/M//'`
 fq2=`du -sh ${cleanpath}/${samplename}/${samplename}_2.fastq | awk '{print $1}' | sed 's/G//;s/M//'`
 if [ $fq1 -ne $fq2 ];then

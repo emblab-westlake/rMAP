@@ -92,7 +92,7 @@ echo "Files size check" > DecompressFiles-Check.txt
 grep "filesize" DeCompress-log.file >> DecompressFiles-Check.txt
 sed 's/G//' DecompressFiles-Check.txt > DF-Check-tmp
 echo "File Size May Be Abnormal, Please Check!!!" > DecompressFiles-Warning.txt
-awk -v OFS='\t' '{if($1>10) print $0,"WARNING!!!"}' DF-Check-tmp >> > DecompressFiles-Warning.txt
+awk -v OFS='\t' '{if($1 < 10){print $0,"WARNING!!!"}}' DF-Check-tmp >> DecompressFiles-Warning.txt
 rm DF-Check-tmp
 echo "pigz decompress down ----------- `date`" >> DeCompress-log.file
 echo -e "time-consuming: $SECONDS seconds" >> DeCompress-log.file
