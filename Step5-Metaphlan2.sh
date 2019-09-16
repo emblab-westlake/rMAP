@@ -74,7 +74,7 @@ mkdir ${obojectpath}
 echo "Metaphlan2 start ----------- `date`" > Metaphlan2-log.file
 
 source $HOME/miniconda3/bin/activate metaphlan2
-for samplename in `cat list.txt`;do
+for samplename in `cat ${samplelist}`;do
 rm ${Alignedpath}/${samplename}/${samplename}_metagenome.bowtie2.bz2
 metaphlan2.py ${Alignedpath}/${samplename}/${samplename}_filtered1.fastq,${Alignedpath}/${samplename}/${samplename}_filtered2.fastq \
 --bowtie2out ${Alignedpath}/${samplename}/${samplename}_metagenome.bowtie2.bz2 --nproc ${Nproc} \
