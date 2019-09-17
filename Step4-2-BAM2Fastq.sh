@@ -135,4 +135,9 @@ rm ${Bowtie}/${samplename}/${samplename}_map2hg19.bam
 rm ${Bowtie}/${samplename}/${samplename}_Unmapped.bam
 done
 echo "==========BAM files have been removed==========`date`" >> Remove-host-log.file
+
+#merge FASTQ files
+for samplename in `cat ${samplelist}`;do
+cat ${Bowtie}/${dirname}/${dirname}_filtered1.fastq ${Bowtie}/${dirname}/${dirname}_filtered2.fastq > ${Bowtie}/${dirname}/${dirname}_merged.fastq
+done
 echo "========== Step 4.2 BAM to Fastq Down ==========`date`" >> Remove-host-log.file

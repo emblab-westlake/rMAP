@@ -7,7 +7,7 @@
 # Version: 1.0
 # Update:2019-9-10
 #
-# Function: Use Metaphlan2 to Annotating to species
+# Function: Use Humann2 and Metaphlan2 to Annotating to species
 
 # Copyright (C) 2019  EMBLab Westlake University
 #
@@ -67,7 +67,7 @@ done
 
 Alignedpath="AlignedData" 
 
-obojectpath="Metaphlan2Result"
+obojectpath="Humann2Result"
 mkdir ${obojectpath}
 
 
@@ -75,10 +75,15 @@ echo "Metaphlan2 start ----------- `date`" > Metaphlan2-log.file
 
 source $HOME/miniconda3/bin/activate metaphlan2
 for samplename in `cat ${samplelist}`;do
-rm ${Alignedpath}/${samplename}/${samplename}_metagenome.bowtie2.bz2
-metaphlan2.py ${Alignedpath}/${samplename}/${samplename}_filtered1.fastq,${Alignedpath}/${samplename}/${samplename}_filtered2.fastq \
---bowtie2out ${Alignedpath}/${samplename}/${samplename}_metagenome.bowtie2.bz2 --nproc ${Nproc} \
---input_type fastq > ${obojectpath}/${samplename}_profiled_metagenome.txt
+
+humann2 --input ${Alignedpath}/${samplename}/${samplename}_merged.fastq --output ${obojectpath}/${samplename} --threads ${Nproc} &
+
+# 添加具体名称
+humann2_rename_table --input ${obojectpath}/${samplename}/${samplename}_genefamilies.tsv \
+--output ${obojectpath}/${samplename}/${samplename}_genefamilies-names.tsv --names uniref90
+humann2_renorm_table --input ${obojectpath}/${samplename}/${samplename}_genefamilies.tsv \
+--output ${obojectpath}/${samplename}/${samplename}_genefamilies-cpm.tsv --units cpm --update-snames
+
 echo "${samplename} has been classed ------------------------ `date`" >> Metaphlan2-log.file
 done
 echo "All samples have been classed ------------------------ `date`" >> Metaphlan2-log.file
