@@ -29,16 +29,23 @@
 help()
 {
     cat <<- EOF
-    Desc: The shell script USES pigz to decompress the .gz files into .fastq files.
-          Relative paths are used internally within the script, please run this script under your PROJECT PATH.
+    Description: 
+    The shell script uses pigz to decompress the .gz files into .fastq files.
+    Relative paths are used internally within the script, please run this script 
+    under your PROJECT PATH.
 
-   Usage of (default TASK num): ./Step1-Multi-Decompress.sh list.txt
-   Usage of (Custom TASK num Parameters): ./Step1-Multi-Decompress.sh -list list.txt -core 10
+    Usage:
+    ./Step1-Multi-Decompress.sh -list list.txt -core 10
     
-    list.txt is Samplenames list file; {--core} specifies the number of concurrent tasks. Task num is 55(default), total thread is 55
-    Email: emblab@westlake.edu.cn
-    Lab: EMBLab westlake university
-    License: GPL
+    Parameters:
+    -h --help   Help information.
+    -list       <list.txt> Samplenames list file; 
+    -core       specifies the number of concurrent tasks. 
+                    default 55, total thread is 55
+
+    Email:      emblab@westlake.edu.cn
+    Lab:        EMBLab westlake university
+    License:    GPL
 EOF
     exit 0
 
@@ -53,12 +60,14 @@ while [ -n "$1" ]; do
         --help) help;; # function help is called
         --) shift;break;; # end of options
         -list) samplelist=$2;break;; #list.txt file
+        -core) corenum=$2;break;; #task
 esac
 done
 
 while [ -n "$3" ]; do
     case $3 in
-        -core) corenum=$4;break;; #list.txt file
+        -core) corenum=$4;break;; #task
+        -list) samplelist=$4;break;; #list.txt file
 esac
 done
 

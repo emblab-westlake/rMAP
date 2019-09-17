@@ -29,16 +29,23 @@
 help()
 {
     cat <<- EOF
-    Desc: The shell script USES Bowtie2 to mapping reads to hg19
-          Relative paths are used internally within the script, please run this script under your PROJECT PATH. PS. Task thread = core*14
+    Description: 
+    The shell script uses Bowtie2 to mapping reads to hg19 database. 
+    Relative paths are used internally within the script, please run this script 
+    under your PROJECT PATH. PS. Task thread = core*14
 
-    Usage of (default TASK num): ./Step3-Multiqueue-Bowtie2.sh list.txt
-    Usage of (Custom TASK num Parameters): ./Step3-Multiqueue-Bowtie2.sh -list list.txt -core 10
+    Usage:
+    ./Step3-Multiqueue-Bowtie2.sh -list list.txt -core 10
     
-    list.txt is Samplenames list file; {--core} specifies the number of concurrent tasks. Task num is 5 (default), Bowtie2 have 14 thread default, So total thread is 60
-    Email: emblab@westlake.edu.cn
-    Lab: EMBLab westlake university
-    License: GPL
+    Parameters:
+    -h --help   Help information.    
+    -list       <list.txt> is Samplenames list file; 
+    -core       specifies the number of concurrent tasks. 
+                    default 5, total thread is 5*14 = 60
+
+    Email:      emblab@westlake.edu.cn
+    Lab:        EMBLab westlake university
+    License:    GPL
 EOF
     exit 0
 
@@ -54,12 +61,14 @@ while [ -n "$1" ]; do
         --help) help;; # function help is called
         --) shift;break;; # end of options
         -list) samplelist=$2;break;; #list.txt file
+        -core) Nproc=$2;break;; #task
 esac
 done
 
 while [ -n "$3" ]; do
     case $3 in
-        -core) Nproc=$4;break;; #list.txt file
+        -core) Nproc=$4;break;; #task
+        -list) samplelist=$4;break;; #list.txt file
 esac
 done
 

@@ -5,7 +5,7 @@
 # Lab: EMBLab Westlake University
 # Date:2019-9-7
 # Version: 1.0
-# Update:2019-9-10
+# Update:2019-9-17
 #
 # Function: Use Humann2 and Metaphlan2 to Annotating to species
 
@@ -29,16 +29,23 @@
 help()
 {
     cat <<- EOF
-    Desc: The shell script USES Metaphlan2 to Annotating to species
-          Relative paths are used internally within the script, please run this script under your PROJECT PATH.
-
-    Usage of (default TASK num): ./Step5-Metaphlan2.sh list.txt
-    Usage of (Custom TASK num Parameters): ./Step5-Metaphlan2.sh -list list.txt -core 10
+    Description: 
+    The shell script uses Humann2 & Metaphlan2 to annotating to functions and species.
+    Relative paths are used internally within the script, please run this script 
+    under your PROJECT PATH.
     
-    list.txt is Samplenames list file; {--core} specifies the number of concurrent tasks. Task num is 60(default), total thread is 60
-    Email: emblab@westlake.edu.cn
-    Lab: EMBLab westlake university
-    License: GPL
+    Usage:
+    ./Step5-Humann2andMetaphlan2.sh -list list.txt -core 10
+    
+    Parameters:
+    -h --help   Help information.
+    -list       <list.txt>  Samplenames list file; 
+    -core       specifies the number of concurrent tasks. 
+                default 60, total thread is 60
+    
+    Email:      emblab@westlake.edu.cn
+    Lab:        EMBLab westlake university
+    License:    GPL
 EOF
     exit 0
 
@@ -47,19 +54,20 @@ EOF
 samplelist=$1
 Nproc=60 #task num
 
-
 while [ -n "$1" ]; do
     case $1 in
         -h) help;; # function help is called
         --help) help;; # function help is called
         --) shift;break;; # end of options
         -list) samplelist=$2;break;; #list.txt file
+        -core) Nproc=$2;break;; #task
 esac
 done
 
 while [ -n "$3" ]; do
     case $3 in
-        -core) Nproc=$4;break;; #list.txt file
+        -core) Nproc=$4;break;; #task
+        -list) samplelist=$4;break;; #list.txt file
 esac
 done
 

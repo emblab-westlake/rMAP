@@ -5,7 +5,7 @@
 # Lab: EMBLab Westlake University
 # Date:2019-9-7
 # Version: 1.0
-# Update:2019-9-10
+# Update:2019-9-17
 #
 # Function: Use bedtools to converting BAM to fastq
 
@@ -29,16 +29,25 @@
 help()
 {
     cat <<- EOF
-    Desc: The shell script USES bedtools to converting BAM to fastq
-          Relative paths are used internally within the script, please run this script under your PROJECT PATH.
-
-    Usage of (default TASK num): ./Step4-2-BAM2Fastq.sh list.txt
-    Usage of (Custom TASK num Parameters): ./Step4-2-BAM2Fastq.sh -list list.txt -core 10
+    Description: 
+    The shell script uses bedtools to converting BAM to fastq. A merged fastq file 
+    will be create for Humann2. 
+    Relative paths are used internally within the script, please run this script 
+    under your PROJECT PATH.
     
-    list.txt is Samplenames list file; {--core} specifies the number of concurrent tasks. Task num is 56(default), total thread is 56
-    Email: emblab@westlake.edu.cn
-    Lab: EMBLab westlake university
-    License: GPL
+    Usage:
+    ./Step4-2-BAM2Fastq.sh -list list.txt -core 10
+    
+    
+    Parameters:
+    -h --help   Help information.
+    -list       <list.txt> is Samplenames list file; 
+    -core       specifies the number of concurrent tasks. 
+                    default 56, total thread is 56
+
+    Email:      emblab@westlake.edu.cn
+    Lab:        EMBLab westlake university
+    License:    GPL
 EOF
     exit 0
 
@@ -54,12 +63,14 @@ while [ -n "$1" ]; do
         --help) help;; # function help is called
         --) shift;break;; # end of options
         -list) samplelist=$2;break;; #list.txt file
+        -core) Nproc=$2;break;; #task
 esac
 done
 
 while [ -n "$3" ]; do
     case $3 in
-        -core) Nproc=$4;break;; #list.txt file
+        -core) Nproc=$4;break;; #task
+        -list) samplelist=$4;break;; #list.txt file
 esac
 done
 

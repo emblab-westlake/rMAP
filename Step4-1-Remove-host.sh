@@ -29,16 +29,24 @@
 help()
 {
     cat <<- EOF
-    Desc: The shell script USES Samtools to remove host pollution from SAM files
-          Relative paths are used internally within the script, please run this script under your PROJECT PATH.
+    Description:
+    The shell script uses Samtools to remove host pollution from SAM files.
+    Relative paths are used internally within the script, please run this script 
+    under your PROJECT PATH.
 
-    Usage of (default TASK num): ./Step4-1-Remove-host.sh list.txt
-    Usage of (Custom TASK num Parameters): ./Step4-1-Remove-host.sh -list list.txt -core 10
+
+    Usage:
+    ./Step4-1-Remove-host.sh -list list.txt -core 10
     
-    list.txt is Samplenames list file; {--core} specifies the number of concurrent tasks. Task num is 56(default), total thread is 56
-    Email: emblab@westlake.edu.cn
-    Lab: EMBLab westlake university
-    License: GPL
+    Parameters:
+    -h --help   Help information.
+    -list       <list.txt> is Samplenames list file; 
+    -core       specifies the number of concurrent tasks.
+                    defalult 56, total thread is 56
+
+    Email:      emblab@westlake.edu.cn
+    Lab:        EMBLab westlake university
+    License:    GPL
 EOF
     exit 0
 

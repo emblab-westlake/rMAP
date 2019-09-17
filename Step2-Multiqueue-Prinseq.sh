@@ -29,15 +29,23 @@
 help()
 {
     cat <<- EOF
-    Desc: The shell script USES prinseq to filter low quality reads
-          Relative paths are used internally within the script, please run this script under your PROJECT PATH.
+    Description: 
+    The shell script use prinseq to filter low quality reads.
+    Relative paths are used internally within the script, please run this script 
+    under your PROJECT PATH.
 
-    Usage: ./Step2-Multiqueue-Prinseq.sh list.txt
-    
-    list.txt is Samplenames list file; {--core} specifies the number of concurrent tasks. Task num is 56(default), you can modify script by VI/VIM
-    Email: emblab@westlake.edu.cn
-    Lab: EMBLab westlake university
-    License: GPL
+    Usage: 
+    ./Step2-Multiqueue-Prinseq.sh -list list.txt -core 10
+
+    Parameters:
+    -h --help   Help information.    
+    -list       <list.txt> is Samplenames list file; 
+    -core       specifies the number of concurrent tasks. 
+                    default 56 
+ 
+    Email:      emblab@westlake.edu.cn
+    Lab:        EMBLab westlake university
+    License:    GPL
 EOF
     exit 0
 
@@ -52,12 +60,14 @@ while [ -n "$1" ]; do
         --help) help;; # function help is called
         --) shift;break;; # end of options
         -list) samplelist=$2;break;; #list.txt file
+        -core) Nproc=$2;break;; #task
 esac
 done
 
 while [ -n "$3" ]; do
     case $3 in
-        -core) Nproc=$4;break;; #list.txt file
+        -core) Nproc=$4;break;; #task
+        -list) samplelist=$4;break;; #list.txt file
 esac
 done
 
