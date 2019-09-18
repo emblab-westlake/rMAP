@@ -13,5 +13,13 @@ MetaPhlAn2:  http://huttenhower.sph.harvard.edu/metaphlan2
 HUMAnN2:     http://huttenhower.sph.harvard.edu/humann2  
 
 ### Open source licenses
+This project licensed under the GNU General Public License v3.0, Please refer to the detailed terms [LICENCE](https://github.com/emblab-westlake/MAP-Emblab/blob/master/LICENSE).  
+If you have any questions, please contact our Email.
 
-To be continued...  
+## User Manual
+### Preparation
+In order to complete the analysis tasks smoothly and accurately, please install the necessary software in advance.  
+1. pigz   
+pigz is a fully functional replacement for gzip that exploits multiple processors and multiple cores to the hilt when compressing data.
+
+
