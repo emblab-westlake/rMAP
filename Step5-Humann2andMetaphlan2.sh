@@ -87,12 +87,6 @@ for samplename in `cat ${samplelist}`;do
 humann2 --input ${Alignedpath}/${samplename}/${samplename}_merged.fastq --output ${obojectpath}/${samplename} \
 --bowtie2 $HOME/miniconda3/envs/metaphlan2/bin --diamond $HOME/miniconda3/bin --threads ${Nproc}
 
-# 添加具体名称
-humann2_rename_table --input ${obojectpath}/${samplename}/${samplename}_genefamilies.tsv \
---output ${obojectpath}/${samplename}/${samplename}_genefamilies-names.tsv --names uniref90
-humann2_renorm_table --input ${obojectpath}/${samplename}/${samplename}_genefamilies.tsv \
---output ${obojectpath}/${samplename}/${samplename}_genefamilies-cpm.tsv --units cpm --update-snames
-
 echo "${samplename} has been classed ------------------------ `date`" >> Metaphlan2-log.file
 done
 echo "All samples have been classed ------------------------ `date`" >> Metaphlan2-log.file
