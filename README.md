@@ -1,5 +1,5 @@
 # MAP-Emblab
-Metagenomics general analysis pipline  
+Metagenomics general analysis pipline (MAP) is a generic analysis pipline developed by  at Westlake University.
 
 ### How to Reference?  
 The following published software is used in our script.   
