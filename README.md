@@ -4,7 +4,7 @@ This script integrates several professional and commonly used metagenomic open s
 
 ### How to Reference?  
 The following published software is used in our script.   
-If you have used this script in your research, please use the following link for references to our script: https://github.com/emblab-westlake/MAP-Emblab   
+If you have used this script in your research, please use the following link for references to our script: https://github.com/emblab-westlake/rMAP   
 And please also cite to the corresponding software.  
 
 Prinseq:     http://prinseq.sourceforge.net/  
