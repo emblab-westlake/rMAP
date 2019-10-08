@@ -1,5 +1,5 @@
 # MAP-Emblab
-Metagenomics general analysis pipline (MAP) is a generic analysis pipline developed by EMB Labs at Westlake University. It is suitable for the metagenomics data of paired-end sequencing.  
+Readbase Metagenomics general analysis pipline (rMAP) is a read level generic analysis pipline developed by EMB Labs at Westlake University. It is suitable for the metagenomics data of paired-end sequencing.  
 This script integrates several professional and commonly used metagenomic open source analysis software, and it had preset the default recommendation parameters for easy and fast analysis.  
 
 ### How to Reference?  
@@ -38,32 +38,32 @@ Each script can view help information using -h/--help.
 Most of our raw data is in fastq.gz or fq.gz format. But some of the software in our process requires the data format to be FASTQ. Decompressed data will be saved to Decompress folder.   
 If your data format is already fastq, you can skip this step.
 ```
-bash Step1-Multi-Decompress.sh -list list.txt -core 10
+bash Step1_Multi_Decompress.sh -list list.txt -core 10
 ```
 ##### Step2-PRINSEQ
 Use PRINSEQ for quality control of raw data. Clean data will be saved to CleanData folder.
 ```
-bash Step2-Multiqueue-Prinseq.sh -list list.txt -core 10
+bash Step2_Multiqueue_Prinseq.sh -list list.txt -core 10
 ```
 ##### Step3-Bowtie2
 Use Bowtie2 to mapping the clean data to hg19 aims to get rid of host genes. Aligned data will be saved to AlignedData folder.  
 ```
-bash Step3-Multiqueue-Bowtie2.sh -list list.txt -core 2
+bash Step3_Multiqueue_Bowtie2.sh -list list.txt -core 2
 ```
 ##### Step4-1-Remove-host
 Remove host genes. BAM without host genes will be saved to AlignedData folder. 
 ```
-bash Step4-1-Remove-host.sh -list list.txt -core 10
+bash Step4_1_Remove_host.sh -list list.txt -core 10
 ```
 ##### Step4-2-BAM-tO-FASTQ
  Convert BAM to fastq. FASTQ-merged without host genes will be saved to AlignedData folder.  
  ```
- bash Step4-2-BAM2Fastq.sh -list list.txt -core 10
+ bash Step4_2_BAM2Fastq.sh -list list.txt -core 10
  ```
 ##### Step5 Humann2
 Use Humann2 to obtain gene function and species annotation. Function and annotation results will be saved to Humann2Result folder.
 ```
-bash Step5-Humann2andMetaphlan2.sh -list list.txt -core 10
+bash Step5_Humann2andMetaphlan2.sh -list list.txt -core 10
 ```
 The function and annotation data obtained after the above analysis can be used for subsequent statistical analysis.  
 
