@@ -1,11 +1,11 @@
-# MAP-Emblab
-Readbase Metagenomics general analysis pipline (rMAP) is a read level generic analysis pipline developed by EMB Labs at Westlake University. It is suitable for the metagenomics data of paired-end sequencing.  
-This script integrates several professional and commonly used metagenomic open source analysis software, and it had preset the default recommendation parameters for easy and fast analysis.  
+# MAP-EMBLab
+Read-based Metagenomics General Analysis Pipline (rMAP) is a read level generic analysis pipline developed by the Environmental Microbiology and Biotechnology (EMB) Lab at Westlake University. It is suitable for the shotgun metagenomic data derived from paired-end sequencing.  
+This script integrates several professional and commonly used open-source metagenomic analysis software, and it has implemented the default recommendated parameters for easy and fast analysis of high-throughput DNA sequence data.  
 
 ### How to Reference?  
 The following published software is used in our script.   
 If you have used this script in your research, please use the following link for references to our script: https://github.com/emblab-westlake/rMAP   
-And please also cite to the corresponding software.  
+Please also cite the corresponding software.  
 
 Prinseq:     http://prinseq.sourceforge.net/  
 Bowtie2:     http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml  
@@ -18,14 +18,14 @@ If you have any questions, please contact our Email.
 
 ## User Manual
 ### Preparation
-In order to complete the analysis tasks smoothly and accurately, please install the necessary software and dependent environment in advance.  
+In order to conduct the analysis tasks smoothly and accurately, please install the necessary software and dependent environment in advance.  
 1. pigz   
 2. PRINSEQ
 3. Bowtie2
 4. MetaPhlAn2
 5. HUMAnN2
 At the same time, please prepare the required database according to the requirements of each software.  
-For example, H. sapiens, UCSC hg19(for Bowtie2);  UniRef90 database(for HUMAnN2); et al.  
+For example, H. sapiens, UCSC hg19(for Bowtie2);  UniRef90 database(for HUMAnN2); etc.  
 ### Raw data
 The paired-end sequences data which suffix with fastq.gz should be stored in the Raw_Data under the project path.   
 For more information, see Example.  
@@ -36,7 +36,7 @@ This script takes a relative path to accommodate the different host naming conve
 Each script can view help information using -h/--help.
 ##### Step1-Decompress
 Most of our raw data is in fastq.gz or fq.gz format. But some of the software in our process requires the data format to be FASTQ. Decompressed data will be saved to Decompress folder.   
-If your data format is already fastq, you can skip this step.
+If your data format is already unzipped fastq file, you can skip this step.
 ```
 bash Step1_Multi_Decompress.sh -list list.txt -core 10
 ```
