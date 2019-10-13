@@ -1,10 +1,10 @@
 # MAP-EMBLab
 Read-based Metagenomics General Analysis Pipline (rMAP) is a read level generic analysis pipline developed by the Environmental Microbiology and Biotechnology (EMB) Lab at Westlake University. It is suitable for the shotgun metagenomic data derived from paired-end sequencing.  
+
 This script integrates several professional and commonly used open-source metagenomic analysis software, and it has implemented the default recommendated parameters for easy and fast analysis of high-throughput DNA sequence data.  
 
 ### How to Reference?  
-The following published software is used in our script.   
-If you have used this script in your research, please use the following link for references to our script: https://github.com/emblab-westlake/rMAP   
+The following published software is used in our script. If you have used this script in your research, please use the following link for references to our script: https://github.com/emblab-westlake/rMAP   
 Please also cite the corresponding software.  
 
 Prinseq:     http://prinseq.sourceforge.net/  
@@ -26,6 +26,7 @@ In order to conduct the analysis tasks smoothly and accurately, please install t
 5. HUMAnN2
 At the same time, please prepare the required database according to the requirements of each software.  
 For example, H. sapiens, UCSC hg19(for Bowtie2);  UniRef90 database(for HUMAnN2); etc.  
+
 ### Raw data
 The paired-end sequences data which suffix with fastq.gz should be stored in the Raw_Data under the project path.   
 For more information, see Example.  
@@ -66,9 +67,3 @@ Use Humann2 to obtain gene function and species annotation. Function and annotat
 bash Step5_Humann2andMetaphlan2.sh -list list.txt -core 10
 ```
 The function and annotation data obtained after the above analysis can be used for subsequent statistical analysis.  
-
-
-
-
-
-
