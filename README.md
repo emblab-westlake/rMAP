@@ -52,12 +52,12 @@ Use Bowtie2 to mapping the clean data to hg19 aims to get rid of host genes. Ali
 bash Step3_Multiqueue_Bowtie2.sh -list list.txt -core 2
 ```
 ##### Step4-1-Remove-host
-Remove host genes. BAM without host genes will be saved to AlignedData folder. 
+Remove DNA reads derived from host (e.g., human). BAM without host genes will be saved to AlignedData folder. 
 ```
 bash Step4_1_Remove_host.sh -list list.txt -core 10
 ```
 ##### Step4-2-BAM-tO-FASTQ
- Convert BAM to fastq. FASTQ-merged without host genes will be saved to AlignedData folder.  
+ Convert BAM to fastq. FASTQ-merged without host reads will be saved to AlignedData folder.  
  ```
  bash Step4_2_BAM2Fastq.sh -list list.txt -core 10
  ```
