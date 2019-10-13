@@ -1,4 +1,4 @@
-# MAP-EMBLab
+# rMAP-emblab
 Read-based Metagenomics General Analysis Pipline (rMAP) is a read level generic analysis pipline developed by the Environmental Microbiology and Biotechnology (EMB) Lab at Westlake University. It is suitable for the shotgun metagenomic data derived from paired-end sequencing.  
 
 This script integrates several professional and commonly used open-source metagenomic analysis software, and it has implemented the default recommendated parameters for easy and fast analysis of high-throughput DNA sequence data.  
